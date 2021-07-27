@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!-- 
+	Template pom.xml for Cecilia applications.
+	
+	Edit it to better fit your needs.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>CBA</groupId>
+	<artifactId>TMC_Reconciliation</artifactId>
+	<packaging>cecilia-application</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<!-- ============================================================ -->
+	<!--             PROPERTIES                                       -->
+	<properties>
+		<cecilia.version>2.1-start-8763</cecilia.version>
+	</properties>
+	<!-- ============================================================ -->
+
+	<!-- ============================================================ -->
+	<!--             DEPENDENCIES                                     -->
+	<dependencies>
+		<dependency>
+			<groupId>org.objectweb.fractal.cecilia</groupId>
+			<artifactId>cecilia-baselib</artifactId>
+			<version>${cecilia.version}</version>
+			<type>car</type>
+		</dependency>
+	</dependencies>
+	<!-- ============================================================ -->
+
+	<build>
+
+		<!-- ========================================================== -->
+		<!--                 PLUGINS                                    -->
+		<plugins>
+
+			<plugin>
+				<groupId>org.objectweb.fractal.cecilia</groupId>
+				<artifactId>maven-cecilia-plugin</artifactId>
+				<version>${cecilia.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- ==================================================== -->
+			<!-- to invoke Cecilia ADL Launcher -->
+			<plugin>
+				<groupId>org.objectweb.fractal.cecilia.toolchain</groupId>
+				<artifactId>maven-ceciliaadl-plugin</artifactId>
+				<version>${cecilia.version}</version>
+				<configuration>
+					<target>unix</target>
+					<adl>Main</adl>
+					<arguments>
+						<parameter>
+							<name>executable-name</name>
+							<value>main</value>
+						</parameter>
+					</arguments>
+				</configuration>
+			</plugin>
+			<!-- ==================================================== -->
+		</plugins>
+	</build>
+
+
+</project>
